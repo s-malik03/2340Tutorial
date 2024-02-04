@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -40,6 +41,20 @@ public class FirstFragment extends Fragment {
                 increment(view);
             }
         });
+
+        binding.decrement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                decrement(view);
+            }
+        });
+
+        binding.reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                reset(view);
+            }
+        });
     }
 
     private void increment(View view) {
@@ -52,6 +67,30 @@ public class FirstFragment extends Fragment {
         count++;
         // convert to string and set on textview
         showCountTextView.setText(count.toString());
+    }
+
+    private void decrement(View view) {
+
+        // get value of count number textview
+        String countString = showCountTextView.getText().toString();
+        // convert the string number into integer data type
+        Integer count = Integer.parseInt(countString);
+
+        // toast if count is zero and trying to decrement
+        if (count == 0) {
+            Toast myToast = Toast.makeText(getActivity(), "Count is already zero!", Toast.LENGTH_SHORT);
+            myToast.show();
+        } else {
+            // decrement the number
+            count--;
+            // convert to string and set on textview
+            showCountTextView.setText(count.toString());
+        }
+    }
+
+    private void reset(View view) {
+
+        showCountTextView.setText("0");
     }
 
     @Override
