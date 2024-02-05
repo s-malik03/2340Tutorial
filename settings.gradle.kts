@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ToDo"
+rootProject.name = "CollegeSchedulerApp"
 include(":app")
